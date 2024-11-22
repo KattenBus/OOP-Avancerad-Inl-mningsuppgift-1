@@ -26,25 +26,61 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> Get()
         {
-            var authors = await _mediator.Send(new GetAuthorsQuery());
-            return Ok(authors); 
+            try
+            {
+                var authors = await _mediator.Send(new GetAuthorsQuery());
+                if (authors == null || !authors.Any())
+                {
+                    return NotFound(new { message = "No authors found." });
+                }
+                return Ok(authors);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+
         }
 
         // GET api/<AuthorController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var getAuthorByID = await _mediator.Send(new GetAuthorByIdQuery(id));
-            return Ok(getAuthorByID);
+            try
+            {
+                var getAuthorByID = await _mediator.Send(new GetAuthorByIdQuery(id));
+
+                if (getAuthorByID == null)
+                {
+                    return NotFound(new { message = $"Author with ID {id} not found." });
+                }
+                return Ok(getAuthorByID);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         // POST api/<AuthorController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Author authorToAdd)
         {
-            var createdAuthor = await _mediator.Send(new CreateAuthorCommand (authorToAdd));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            return Ok(createdAuthor);
+            try
+            {
+                var createdAuthor = await _mediator.Send(new CreateAuthorCommand(authorToAdd));
+
+                return Ok(createdAuthor);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         // PUT api/<AuthorController>/5
@@ -53,24 +89,50 @@ namespace WebAPI.Controllers
         {
             if (id != authorToUpdate.Id)
             {
-                return BadRequest("Author ID mismatch.");
+                return BadRequest(new { message = "Author ID mismatch." });
             }
 
-            var updatedAuthor = await _mediator.Send(new UpdateAuthorCommand(authorToUpdate.Id, authorToUpdate.FirstName, authorToUpdate.LastName));
-            if (updatedAuthor == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest(ModelState);
             }
-            return Ok(updatedAuthor);
+
+            try
+            {
+                var updatedAuthor = await _mediator.Send(new UpdateAuthorCommand(authorToUpdate.Id, authorToUpdate.FirstName, authorToUpdate.LastName));
+
+                if (updatedAuthor == null)
+                {
+                    return NotFound(new { message = $"Author with ID {id} not found." });
+                }
+
+                return Ok(updatedAuthor);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         // DELETE api/<AuthorController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var deletedAuthor = await _mediator.Send(new DeleteAuthorCommand(id));
+            try
+            {
+                var deleteAuthorResult = await _mediator.Send(new DeleteAuthorCommand(id));
 
-            return Ok(deletedAuthor);
+                if (!deleteAuthorResult)
+                {
+                    return NotFound(new { message = $"Author with ID {id} not found or could not be deleted." });
+                }
+
+                return Ok(new { message = $"Author with ID {id} was successfully deleted." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
     }
 }
