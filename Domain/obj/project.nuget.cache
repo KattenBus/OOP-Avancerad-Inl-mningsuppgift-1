@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xCnAaZxykpFd65s0lZK4gIAdFUOOzAVBmkRdMkqG0pYD2wiRHea2zwcA/KL7bXzqQ6YiCbWnsq/SlMtlES5Plw==",
+  "dgSpecHash": "m+SI6UB7lLzIETYN6PDCqqmjVaPubr/Ju6ohdlF1unjZn2z9nU8/SE6rHr2/yBRsYcnlzmrDd9d1uZ2ftmqKEw==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Simon\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Simon\\.nuget\\packages\\moq\\4.20.72\\moq.4.20.72.nupkg.sha512",

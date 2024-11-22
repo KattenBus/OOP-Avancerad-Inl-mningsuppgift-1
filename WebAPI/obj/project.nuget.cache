@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+ld9caVMbXHcLTMGaBA0rII4wgw8CPJjK1ORxI4VZukyhbkf0GnVHk9TuMcRcQP8796kRj61zx0vFKvXZ3ONPQ==",
+  "dgSpecHash": "U7QIiZawfxPdyB1P3lhp+KxyOtOLzNXBd838tBYtZRFjAS/kgfvIHdA5L84hbucwA4micqAtqoviOG0h4Vanfg==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Simon\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Simon\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Application\\Application.csproj": {}
+    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Application\\Application.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Application\\Application.csproj": {
+    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Application\\Application.csproj",
+        "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Simon\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Application\\obj\\",
+        "outputPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj"
+              "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj"
               },
-              "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj"
+              "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -85,14 +85,14 @@
         }
       }
     },
-    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj": {
+    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Simon\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\obj\\",
+        "outputPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -155,14 +155,14 @@
         }
       }
     },
-    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Simon\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\obj\\",
+        "outputPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -183,8 +183,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Domain\\Domain.csproj"
+              "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Domain\\Domain.csproj"
               }
             }
           }

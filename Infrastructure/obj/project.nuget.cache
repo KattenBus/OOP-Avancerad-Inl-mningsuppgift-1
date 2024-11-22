@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/BjdBDtXmFYtT9gzGn6u1l8kOlw3JY77QmaBoFDIkMXN6elwyty68/5OGm//++bYbJf+PR2gFU1VFZULJQx/hA==",
+  "dgSpecHash": "XmBiNfaFey1ORA4FcFxs5tQ4B1QC/V4rXd7Te73c95UVrNLbNOrDrLKZmHfWL0Q1KKlmeginMH0ZNNzCZwuGEQ==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Simon\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Simon\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
