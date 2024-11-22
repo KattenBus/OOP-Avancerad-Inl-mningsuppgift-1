@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AVbsVxkpKhCaYcqW/zrzD7oUuPwnKUuUZA1qgYg/2HWQ1wSZYFOpV1CyVczNKuZq6A92R//P6uh+lx5Ak87vWw==",
+  "dgSpecHash": "F9/L+s5Z4HQaawjw22wGWLiNRMY34OMHdpvkBEF/ueuQiyOsS3ubV+4T8iwtjmWM35PZbcIHW7g4SvU5HacXzw==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Tests\\Tests.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Simon\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Simon\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",

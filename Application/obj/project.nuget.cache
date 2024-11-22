@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "szBFvwQEjaPbflfqiD9vrwstNV+M64p6bJMtnjGdqk5HXGwKa7YXzFQzCvcZW3lWz/QckH7tBMXjx3ZCug6cpw==",
+  "dgSpecHash": "5Qpc8TylKlXrJ0L7QeV9OR/plDgJcM9vR3VlfxmpuAyEhEpFt1bCFbUtgbHk+m/f8RqdeVwMhum9yE3LVGHZmQ==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Application\\Application.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1 - Rätt\\OOP-Avancerad-Inl-mningsuppgift-1\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Simon\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Simon\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
