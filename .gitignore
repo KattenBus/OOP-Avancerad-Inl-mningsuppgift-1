@@ -1,3 +1,8 @@
 # Ignore the .vs folder (Visual Studio files)
-
 .vs/
+
+# Ignore the bin folder 
+bin/
+
+# Ignore the obj folder 
+obj/
