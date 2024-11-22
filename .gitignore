@@ -1,0 +1,3 @@
+# Ignore the .vs folder (Visual Studio files)
+
+.vs/
