@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "/BjdBDtXmFYtT9gzGn6u1l8kOlw3JY77QmaBoFDIkMXN6elwyty68/5OGm//++bYbJf+PR2gFU1VFZULJQx/hA==",
+  "success": true,
+  "projectFilePath": "D:\\Visual Studio Projects\\Objektsorienterad Programmering, Avancerad\\Inlämningsuppgift 1\\Inlämningsuppgift 1 - Bygg ett Biblotek\\Infrastructure\\Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Simon\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\Simon\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Simon\\.nuget\\packages\\moq\\4.20.72\\moq.4.20.72.nupkg.sha512",
+    "C:\\Users\\Simon\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
