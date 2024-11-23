@@ -122,7 +122,7 @@ namespace WebAPI.Controllers
             {
                 var deleteAuthorResult = await _mediator.Send(new DeleteAuthorCommand(id));
 
-                if (!deleteAuthorResult)
+                if (deleteAuthorResult == null)
                 {
                     return NotFound(new { message = $"Author with ID {id} not found or could not be deleted." });
                 }

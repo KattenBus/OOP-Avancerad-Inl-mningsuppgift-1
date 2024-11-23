@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Domain;
+using MediatR;
 
 namespace Application.Books.Commands.DeleteBook
 {
-    public class DeleteBookCommand : IRequest<bool>
+    public class DeleteBookCommand : IRequest<Book>
     {
         public int BookId { get; }
 
