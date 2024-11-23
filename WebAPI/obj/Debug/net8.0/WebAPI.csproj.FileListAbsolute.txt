@@ -83,3 +83,13 @@ D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämnings
 D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\obj\Debug\net8.0\WebAPI.pdb
 D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Visual Studio Projects\Objektsorienterad Programmering, Avancerad\Inlämningsuppgift 1 - Rätt\OOP-Avancerad-Inl-mningsuppgift-1\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
