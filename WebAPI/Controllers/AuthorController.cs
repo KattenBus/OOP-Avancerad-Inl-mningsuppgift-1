@@ -29,17 +29,20 @@ namespace WebAPI.Controllers
             try
             {
                 var authors = await _mediator.Send(new GetAuthorsQuery());
-                if (authors == null || !authors.Any())
+
+                if (!authors.Any())
                 {
-                    return NotFound(new { message = "No authors found." });
+                    return NotFound(new { message = "No authors found in the Database!" });
                 }
-                return Ok(authors);
+                else
+                {
+                    return Ok(authors);
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { error = ex.Message });
             }
-
         }
 
         // GET api/<AuthorController>/5
@@ -105,8 +108,10 @@ namespace WebAPI.Controllers
                 {
                     return NotFound(new { message = $"Author with ID {id} not found." });
                 }
-
-                return Ok(updatedAuthor);
+                else
+                {
+                    return Ok(updatedAuthor);
+                }
             }
             catch (Exception ex)
             {
@@ -126,8 +131,10 @@ namespace WebAPI.Controllers
                 {
                     return NotFound(new { message = $"Author with ID {id} not found or could not be deleted." });
                 }
-
-                return Ok(new { message = $"Author with ID {id} was successfully deleted." });
+                else
+                {
+                    return Ok(new { message = $"Author with ID {id} was successfully deleted." });
+                }
             }
             catch (Exception ex)
             {

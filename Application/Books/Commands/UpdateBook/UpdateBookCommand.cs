@@ -2,7 +2,7 @@
 
 namespace Application.Books.Commands.UpdateBook
 {
-    public class UpdateBookCommand : IRequest<Domain.Book>
+    public class UpdateBookCommand : IRequest<Domain.Book?>
     {
         public int BookId { get; }
         public string NewTitle { get; }

@@ -1,31 +1,28 @@
 ﻿using MediatR;
-using Infrastructure.Database;
 using Domain;
+using Application.Interfaces.RepositoryInterfaces;
 
 namespace Application.Books.Commands.UpdateBook
 {
-    public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Domain.Book>
+    public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Book?>
     {
-        private readonly FakeDatabase _database;
+        private readonly IBookRepository _bookRepository;
 
-        public UpdateBookCommandHandler(FakeDatabase database)
+        public UpdateBookCommandHandler(IBookRepository bookRepository)
         {
-            _database = database;
+            _bookRepository = bookRepository;
         }
 
-        public Task<Domain.Book> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
+        public async Task<Book?> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
-            var bookToUpdate = _database.Books.FirstOrDefault(book => book.Id == request.BookId);
-
-            if (bookToUpdate == null)
+            var updatedBook = new Book
             {
-                throw new InvalidOperationException($"Book with ID {request.BookId} not found.");
-            }
+                Id = request.BookId,
+                Title = request.NewTitle,
+                Description = request.NewDescription
+            };
 
-            bookToUpdate.Title = request.NewTitle;
-            bookToUpdate.Description = request.NewDescription;
-
-            return Task.FromResult(bookToUpdate);
+            return await _bookRepository.UpdateBook(request.BookId, updatedBook);
         }
     }
 }
