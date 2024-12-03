@@ -1,24 +1,23 @@
-﻿
-using MediatR;
+﻿using MediatR;
 using Domain;
-using Infrastructure.Database;
+using Application.Interfaces.RepositoryInterfaces;
 
 namespace Application.Books.Commands.CreateBook
 {
-    public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Domain.Book>
+    public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Book>
     {
-        private readonly FakeDatabase _database;
+        private readonly IBookRepository _bookRepository;
 
-        public CreateBookCommandHandler(FakeDatabase database)
+        public CreateBookCommandHandler(IBookRepository bookRepository)
         {
-            _database = database;
+            _bookRepository = bookRepository;
         }
 
-        public Task<Domain.Book> Handle(CreateBookCommand request, CancellationToken cancellationToken)
+        public async Task<Book> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            _database.Books.Add(request.BookToAdd);
+           await _bookRepository.AddBook(request.BookToAdd);
 
-            return Task.FromResult(request.BookToAdd);
+            return request.BookToAdd;
         }
     }
 }

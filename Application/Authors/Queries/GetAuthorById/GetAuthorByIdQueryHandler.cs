@@ -1,26 +1,23 @@
-﻿using Domain;
-using Infrastructure.Database;
+﻿using Application.Interfaces.RepositoryInterfaces;
+using Domain;
 using MediatR;
 
 namespace Application.Authors.Queries.GetAuthorById
 {
-    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, Author>
+    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, Author?>
     {
-        private readonly FakeDatabase _database;
+        private readonly IAuthorRepository _authorRepository;
 
-        public GetAuthorByIdQueryHandler(FakeDatabase database)
+        public GetAuthorByIdQueryHandler(IAuthorRepository authorRepository)
         {
-            _database = database;
+            _authorRepository = authorRepository;
         }
 
-        public Task<Author>Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Author?> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
         {
-            var getAuthorByID = _database.Authors.FirstOrDefault(author  => author.Id == request.AuthorId);
-            if (getAuthorByID == null)
-            {
-                throw new ArgumentException($"Author with ID {request.AuthorId} not found.");
-            }
-            return Task.FromResult( getAuthorByID );
+            var getAuthorByID =  await _authorRepository.GetAuthorById(request.AuthorId);
+
+            return getAuthorByID;
         }
     }
 }

@@ -1,29 +1,23 @@
-﻿using Domain;
-using Infrastructure.Database;
+﻿using Application.Interfaces.RepositoryInterfaces;
+using Domain;
 using MediatR;
 
 namespace Application.Authors.Commands.DeleteAuthor
 {
     public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, Author?>
     {
-        private readonly FakeDatabase _database;
+        private readonly IAuthorRepository _authorRepository;
 
-        public DeleteAuthorCommandHandler(FakeDatabase fakeDatabase)
+        public DeleteAuthorCommandHandler(IAuthorRepository authorRepository)
         {
-            _database = fakeDatabase;
+            _authorRepository = authorRepository;
         }
 
-        public Task<Author?> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
+        public async Task<Author?> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
         {
-            var authorToRemove = _database.Authors.FirstOrDefault(author => author.Id == request.AuthorId);
+            var authorToRemove = await _authorRepository.DeleteAuthorById(request.AuthorId);
 
-            if (authorToRemove != null)
-            {
-                _database.Authors.Remove(authorToRemove);
-                return Task.FromResult<Author?>(authorToRemove);
-            }
-
-            return Task.FromResult<Author?>(null);
+            return authorToRemove;
         }
     }
 }

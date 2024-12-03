@@ -1,30 +1,27 @@
-﻿using Domain;
-using Infrastructure.Database;
+﻿using Application.Interfaces.RepositoryInterfaces;
+using Domain;
 using MediatR;
 
 namespace Application.Authors.Commands.UpdateAuthor
 {
-    public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, Author>
+    public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, Author?>
     {
-        private readonly FakeDatabase _database;
-        public UpdateAuthorCommandHandler(FakeDatabase database)
+        private readonly IAuthorRepository _repository;
+        public UpdateAuthorCommandHandler(IAuthorRepository authorRepository)
         {
-            _database = database;
+            _repository = authorRepository;
         }
 
-        public Task<Author> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
+        public async Task<Author?> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
         {
-            var authorToUpdate = _database.Authors.FirstOrDefault(author => author.Id == request.AuthorId);
-
-            if (authorToUpdate == null)
+            var updatedAuthor = new Author
             {
-                throw new ArgumentException($"Author with ID {request.AuthorId} not found.");
-            }
+                Id = request.AuthorId,
+                FirstName = request.NewAuthorFirstName,
+                LastName = request.NewAuthorLastName
+            };
 
-            authorToUpdate.FirstName = request.NewAuthorFirstName;
-            authorToUpdate.LastName = request.NewAuthorLastName;
-
-            return Task.FromResult( authorToUpdate );
+            return await _repository.UpdateAuthor(request.AuthorId, updatedAuthor);
         }
     }
 }

@@ -1,23 +1,23 @@
-﻿
-using MediatR;
-using Infrastructure.Database;
+﻿using MediatR;
 using Domain;
+using Application.Interfaces.RepositoryInterfaces;
 
 namespace Application.Books.Queries.GetAllBooks
 {
     public class GetBooksQueryHandler : IRequestHandler<GetBooksQuery, List<Book>>
     {
-        private readonly FakeDatabase _database;
+        private readonly IBookRepository _bookRepository;
 
-        public GetBooksQueryHandler(FakeDatabase database)
+        public GetBooksQueryHandler(IBookRepository bookRepository)
         {
-            _database = database;
+            _bookRepository = bookRepository;
         }
 
-        public Task<List<Book>> Handle(GetBooksQuery request, CancellationToken cancellationToken)
+        public async Task<List<Book>> Handle(GetBooksQuery request, CancellationToken cancellationToken)
         {
-            var allBooks = _database.Books;
-            return Task.FromResult(allBooks);
+            var allBooks = await _bookRepository.GetAllBooksList();
+
+            return allBooks;
         }
     }
 }

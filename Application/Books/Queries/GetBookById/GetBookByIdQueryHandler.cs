@@ -1,26 +1,23 @@
-﻿using Domain;
-using Infrastructure.Database;
+﻿using Application.Interfaces.RepositoryInterfaces;
+using Domain;
 using MediatR;
 
 namespace Application.Books.Queries.GetBookById
 {
-    public class GetBookByIdQueryHandler : IRequestHandler<GetBookByIdQuery, Book>
+    public class GetBookByIdQueryHandler : IRequestHandler<GetBookByIdQuery, Book?>
     {
-        private readonly FakeDatabase _database;
+        private readonly IBookRepository _bookRepository;
 
-        public GetBookByIdQueryHandler(FakeDatabase database)
+        public GetBookByIdQueryHandler(IBookRepository bookRepository)
         {
-            _database = database;
+            _bookRepository = bookRepository;
         }
 
-        public Task<Book>Handle(GetBookByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Book?> Handle(GetBookByIdQuery request, CancellationToken cancellationToken)
         {
-            var getBookByID = _database.Books.FirstOrDefault(book  => book.Id == request.BookId);
-            if (getBookByID == null)
-            {
-                throw new ArgumentException($"Book with ID {request.BookId} not found.");
-            }
-            return Task.FromResult( getBookByID );
+            var getBookByID = await _bookRepository.GetBookById(request.BookId);
+
+            return getBookByID;
         }
     }
 }

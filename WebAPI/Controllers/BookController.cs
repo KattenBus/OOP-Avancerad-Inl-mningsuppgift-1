@@ -16,27 +16,29 @@ namespace WebAPI.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IMediator _mediatr;
+        private readonly IMediator _mediator;
 
-        public BookController(IMediator mediatr)
+        public BookController(IMediator mediator)
         {
-            _mediatr = mediatr;
+            _mediator = mediator;
         }
 
         // GET: api/<BookController>
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> Get()
         {
             try
             {
-                var books = await _mediatr.Send(new GetBooksQuery());
+                var books = await _mediator.Send(new GetBooksQuery());
                 
-                if (books == null || !books.Any())
+                if (!books.Any())
                 {
-                    return NotFound(new { message = "No books found."});
+                    return NotFound(new { message = "No books found in the Database."});
                 }
-                return Ok(books);
+                else
+                {
+                    return Ok(books);
+                }
             }
             catch (Exception ex)
             {
@@ -50,13 +52,16 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var getBookByID = await _mediatr.Send(new GetBookByIdQuery(id));
+                var getBookByID = await _mediator.Send(new GetBookByIdQuery(id));
 
                 if (getBookByID == null)
                 {
                     return NotFound(new { message = $"Book with ID {id} not found." });
                 }
-                return Ok(getBookByID);
+                else
+                {
+                    return Ok(getBookByID);
+                }
             }
             catch (Exception ex)
             {
@@ -74,7 +79,7 @@ namespace WebAPI.Controllers
             }
             try
             {
-                var createdBook = await _mediatr.Send(new CreateBookCommand(bookToAdd));
+                var createdBook = await _mediator.Send(new CreateBookCommand(bookToAdd));
 
                 return Ok(createdBook);
             }
@@ -100,14 +105,16 @@ namespace WebAPI.Controllers
 
             try
             {
-                var updatedBook = await _mediatr.Send(new UpdateBookCommand(updateRequest.Id, updateRequest.Title, updateRequest.Description));
+                var updatedBook = await _mediator.Send(new UpdateBookCommand(updateRequest.Id, updateRequest.Title, updateRequest.Description));
 
                 if (updatedBook == null)
                 {
                     return NotFound();
                 }
-
-                return Ok(updatedBook);
+                else
+                {
+                    return Ok(updatedBook);
+                }
             }
             catch (Exception ex)
             {
@@ -121,14 +128,16 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var deleteBookResult = await _mediatr.Send(new DeleteBookCommand(id));
+                var deleteBookResult = await _mediator.Send(new DeleteBookCommand(id));
 
                 if (deleteBookResult == null)
                 {
                     return NotFound(new { message = $"Book with ID {id} not found or could not be deleted." });
                 }
-
-                return Ok(new { message = $"Book with ID {id} was successfully deleted." });
+                else
+                {
+                    return Ok(new { message = $"Book with ID {id} was successfully deleted." });
+                }
             }
             catch (Exception ex)
             {
