@@ -1,6 +1,7 @@
 # OOP-Avancerad-Inl-mningsuppgift-1
 
 Första inlämningsuppgiften för kursen OOP Avancerad.
+*UPPDATERAD för inlämning 2
 
 //INFO
 
