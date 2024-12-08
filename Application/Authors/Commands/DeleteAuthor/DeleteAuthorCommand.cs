@@ -1,12 +1,13 @@
-﻿using Domain;
+﻿using Application.Dtos;
+using Domain;
 using MediatR;
 
 namespace Application.Authors.Commands.DeleteAuthor
 {
-    public class DeleteAuthorCommand : IRequest<Author?>
+    public class DeleteAuthorCommand : IRequest<OperationResult<AuthorDto>>
     {
-        public int AuthorId { get; set; }
-        public DeleteAuthorCommand(int authorId) 
+        public Guid AuthorId { get; set; }
+        public DeleteAuthorCommand(Guid authorId) 
         { 
             AuthorId = authorId;
         }

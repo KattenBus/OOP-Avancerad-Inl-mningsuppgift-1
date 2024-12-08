@@ -1,13 +1,14 @@
-﻿using Domain;
+﻿using Application.Dtos;
+using Domain;
 using MediatR;
 
 namespace Application.Authors.Queries.GetAuthorById
 {
-    public class GetAuthorByIdQuery : IRequest<Author?>
+    public class GetAuthorByIdQuery : IRequest<OperationResult<AuthorDto>>
     {
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
 
-        public GetAuthorByIdQuery(int authorId) 
+        public GetAuthorByIdQuery(Guid authorId) 
         {
             AuthorId = authorId;
         }

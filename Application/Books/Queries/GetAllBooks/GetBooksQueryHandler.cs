@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Domain;
 using Application.Interfaces.RepositoryInterfaces;
+using Application.Dtos;
 
 namespace Application.Books.Queries.GetAllBooks
 {
-    public class GetBooksQueryHandler : IRequestHandler<GetBooksQuery, List<Book>>
+    public class GetBooksQueryHandler : IRequestHandler<GetBooksQuery, OperationResult<List<BookDto>>>
     {
         private readonly IBookRepository _bookRepository;
 
@@ -13,11 +14,31 @@ namespace Application.Books.Queries.GetAllBooks
             _bookRepository = bookRepository;
         }
 
-        public async Task<List<Book>> Handle(GetBooksQuery request, CancellationToken cancellationToken)
+        public async Task <OperationResult<List<BookDto>>> Handle(GetBooksQuery request, CancellationToken cancellationToken)
         {
-            var allBooks = await _bookRepository.GetAllBooksList();
+            var allBooksFromDB = await _bookRepository.GetAllBooksList();
 
-            return allBooks;
+            if (allBooksFromDB.isSuccessfull)
+            {
+                var allBooksRepsonse = new List<BookDto>();
+
+                foreach (var book in allBooksFromDB.Data)
+                {
+                    var bookDto = new BookDto()
+                    {
+                        Id = book.Id,
+                        Title = book.Title,
+                        Description = book.Description,
+                    };
+                    allBooksRepsonse.Add(bookDto);
+                }
+
+                return OperationResult<List<BookDto>>.Successfull(allBooksRepsonse);
+            }
+            else
+            {
+                return OperationResult<List<BookDto>>.Failure(allBooksFromDB.ErrorMessage);
+            }
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Domain;
 using Application.Interfaces.RepositoryInterfaces;
+using Application.Dtos;
 
 namespace Application.Books.Commands.DeleteBook
 {
-    public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Book?>
+    public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, OperationResult<BookDto>>
     {
         private readonly IBookRepository _bookRepository;
 
@@ -13,11 +14,23 @@ namespace Application.Books.Commands.DeleteBook
             _bookRepository = bookRepository;
         }
 
-        public async Task<Book?> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
+        public async Task<OperationResult<BookDto>> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
         {
             var bookToDelete = await _bookRepository.DeleteBookById(request.BookId);
 
-            return bookToDelete;
+            if (bookToDelete.isSuccessfull)
+            {
+                var bookResponse = new BookDto
+                {
+                    Title = bookToDelete.Data.Title,
+                    Description = bookToDelete.Data.Description
+                };
+                return OperationResult<BookDto>.Successfull(bookResponse);
+            }
+            else
+            {
+                return OperationResult<BookDto>.Failure(bookToDelete.ErrorMessage);
+            }
         }
     }
 }

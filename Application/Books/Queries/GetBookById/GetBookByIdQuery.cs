@@ -1,13 +1,14 @@
-﻿using Domain;
+﻿using Application.Dtos;
+using Domain;
 using MediatR;
 
 namespace Application.Books.Queries.GetBookById
 {
-    public class GetBookByIdQuery : IRequest<Book?>
+    public class GetBookByIdQuery : IRequest<OperationResult<BookDto>>
     {
-        public int BookId { get; set; }
+        public Guid BookId { get; set; }
 
-        public GetBookByIdQuery(int bookId) 
+        public GetBookByIdQuery(Guid bookId) 
         {
             BookId = bookId;
         }

@@ -17,54 +17,109 @@ namespace Infrastructure.Repositories
             _realDatabase = realDatabase;
         }
 
-        public async Task<List<Book>> GetAllBooksList()
+        public async Task<OperationResult<List<Book>>> GetAllBooksList()
         {
-            return await _realDatabase.Books.ToListAsync();
-        }
-
-        public async Task<Book?> GetBookById(int id)
-        {
-            return await _realDatabase.Books.FirstOrDefaultAsync(book => book.Id == id);
-        }
-        public async Task<Book> AddBook(Book book)
-        {
-            _realDatabase.Books.Add(book);
-            await _realDatabase.SaveChangesAsync();
-
-            return book;
-        }
-
-        public async Task<Book?> UpdateBook(int id, Book book)
-        {
-            var bookToUpdate = _realDatabase.Books.FirstOrDefault(book => book.Id == id);
-
-            if (bookToUpdate == null)
+            try
             {
-                throw new InvalidOperationException($"Book with ID {id} not found.");
+                var allBooks = await _realDatabase.Books.ToListAsync();
+                if (allBooks == null)
+                {
+                    return OperationResult<List<Book>>.Failure("No books found in the database");
+                }
+                else
+                {
+                    return OperationResult<List<Book>>.Successfull(allBooks);
+                }
+                    
             }
-
-            bookToUpdate.Title = book.Title;
-            bookToUpdate.Description = book.Description;
-
-            await _realDatabase.SaveChangesAsync();
-
-            return bookToUpdate;
+            catch (Exception ex)
+            {
+                return OperationResult<List<Book>>.Failure(errorMessage: $"An error occurred while fetching all Books from the Database: {ex.Message}");
+            }
         }
 
-        public async Task<Book?> DeleteBookById(int id)
+        public async Task<OperationResult<Book>> GetBookById(Guid id)
         {
-            var bookToDelete = _realDatabase.Books.FirstOrDefault(book => book.Id == id);
+            try
+            {
+                var getBookByID = await _realDatabase.Books.FirstOrDefaultAsync(book => book.Id == id);
 
-            if (bookToDelete == null)
-            {
-                return null;
+                if (getBookByID == null)
+                {
+                    return OperationResult<Book>.Failure($"No book with {id} found in the database");
+                }
+                else
+                {
+                    return OperationResult<Book>.Successfull(getBookByID);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _realDatabase.Books.Remove(bookToDelete);
+                return OperationResult<Book>.Failure(errorMessage: $"An error occurred while fetching Book with {id} from the Database: {ex.Message}");
+            }
+        }
+        public async Task<OperationResult<Book>> AddBook(Book book)
+        {
+            try
+            {
+                _realDatabase.Books.Add(book);
                 await _realDatabase.SaveChangesAsync();
 
-                return bookToDelete;
+                return OperationResult<Book>.Successfull(book);
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<Book>.Failure(errorMessage: $"An error occurred while adding Book to the Database: {ex.Message}");
+            }
+        }
+
+        public async Task<OperationResult<Book>> UpdateBook(Guid id, Book book)
+        {
+            try
+            {
+                var bookToUpdate = _realDatabase.Books.FirstOrDefault(book => book.Id == id);
+
+                if (bookToUpdate == null)
+                {
+                    return OperationResult<Book>.Failure($"No book with {id} found in the database");
+                }
+                else
+                {
+                    bookToUpdate.Title = book.Title;
+                    bookToUpdate.Description = book.Description;
+
+                    await _realDatabase.SaveChangesAsync();
+
+                    return OperationResult<Book>.Successfull(bookToUpdate);
+                }
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<Book>.Failure(errorMessage: $"An error occurred while updating Book with {id} to the Database: {ex.Message}");
+            }
+        }
+
+        public async Task<OperationResult<Book>> DeleteBookById(Guid id)
+        {
+            try
+            {
+                var bookToDelete = _realDatabase.Books.FirstOrDefault(book => book.Id == id);
+
+                if (bookToDelete == null)
+                {
+                    return OperationResult<Book>.Failure($"No book with {id} found in the database");
+                }
+                else
+                {
+                    _realDatabase.Books.Remove(bookToDelete);
+                    await _realDatabase.SaveChangesAsync();
+
+                    return OperationResult<Book>.Successfull(bookToDelete);
+                }
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<Book>.Failure(errorMessage: $"An error occurred while deleting Book with {id} to the Database: {ex.Message}");
             }
         }
     }

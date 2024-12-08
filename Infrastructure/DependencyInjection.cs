@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.RepositoryInterfaces;
 using Infrastructure.Database;
+using Infrastructure.DatabaseSeeder;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,12 @@ namespace Infrastructure
             services.AddScoped<IAuthorRepository, AuthorRepository>();
 
             services.AddScoped<IBookRepository, BookRepository>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddTransient<UserSeeder>();
+            services.AddTransient<BookSeeder>();
+            services.AddTransient<AuthorSeeder>();
 
             return services;
         }
