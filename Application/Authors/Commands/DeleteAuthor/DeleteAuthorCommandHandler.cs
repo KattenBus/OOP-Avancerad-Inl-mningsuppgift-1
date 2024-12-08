@@ -1,10 +1,11 @@
-﻿using Application.Interfaces.RepositoryInterfaces;
+﻿using Application.Dtos;
+using Application.Interfaces.RepositoryInterfaces;
 using Domain;
 using MediatR;
 
 namespace Application.Authors.Commands.DeleteAuthor
 {
-    public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, Author?>
+    public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, OperationResult<AuthorDto>>
     {
         private readonly IAuthorRepository _authorRepository;
 
@@ -13,11 +14,24 @@ namespace Application.Authors.Commands.DeleteAuthor
             _authorRepository = authorRepository;
         }
 
-        public async Task<Author?> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
+        public async Task<OperationResult<AuthorDto>> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
         {
             var authorToRemove = await _authorRepository.DeleteAuthorById(request.AuthorId);
 
-            return authorToRemove;
+            if (authorToRemove.isSuccessfull)
+            {
+                var authorResponse = new AuthorDto
+                {
+                    FirstName = authorToRemove.Data.FirstName,
+                    LastName = authorToRemove.Data.LastName,
+                };
+
+                return OperationResult<AuthorDto>.Successfull(authorResponse);
+            }
+            else
+            {
+                return OperationResult<AuthorDto>.Failure(authorToRemove.ErrorMessage);
+            }
         }
     }
 }

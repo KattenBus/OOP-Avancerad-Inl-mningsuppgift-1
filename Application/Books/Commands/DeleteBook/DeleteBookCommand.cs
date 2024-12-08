@@ -1,13 +1,14 @@
-﻿using Domain;
+﻿using Application.Dtos;
+using Domain;
 using MediatR;
 
 namespace Application.Books.Commands.DeleteBook
 {
-    public class DeleteBookCommand : IRequest<Book?>
+    public class DeleteBookCommand : IRequest<OperationResult<BookDto>>
     {
-        public int BookId { get; }
+        public Guid BookId { get; }
 
-        public DeleteBookCommand(int bookId) 
+        public DeleteBookCommand(Guid bookId) 
         {
             BookId = bookId;
         }

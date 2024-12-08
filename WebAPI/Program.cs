@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Infrastructure.DatabaseSeeder;
 
 namespace WebAPI
 {
@@ -15,6 +16,7 @@ namespace WebAPI
 
             // Add services to the container.
 
+            //JWT-Settings
             var jwtSettings = builder.Configuration.GetSection("JwtSettings");
             byte[] secretKey = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"]!);
 
@@ -80,6 +82,18 @@ namespace WebAPI
             builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
             var app = builder.Build();
+
+            //Call Seeder Methods on Startup
+            using (var scope = app.Services.CreateScope())
+            {
+                var userSeeder = scope.ServiceProvider.GetRequiredService<UserSeeder>();
+                var bookSeeder = scope.ServiceProvider.GetRequiredService<BookSeeder>();
+                var authorSeeder = scope.ServiceProvider.GetRequiredService<AuthorSeeder>();
+
+                userSeeder.SeedAsync().GetAwaiter().GetResult();
+                bookSeeder.SeedAsync().GetAwaiter().GetResult();
+                authorSeeder.SeedAsync().GetAwaiter().GetResult();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

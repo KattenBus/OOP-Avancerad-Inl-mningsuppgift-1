@@ -1,32 +1,36 @@
-﻿//using Application.Users.Queries.Login.Helpers;
-//using Infrastructure.Database;
-//using MediatR;
+﻿using Application.Interfaces.RepositoryInterfaces;
+using Application.Users.Queries.Login.Helpers;
+using Domain;
+using MediatR;
 
-//namespace Application.Users.Queries.Login
-//{
-//    public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, string>
-//    {
-//        private readonly FakeDatabase _database;
-//        private readonly TokenHelper _tokenHelper;
+namespace Application.Users.Queries.Login
+{
+    public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, OperationResult<string>>
+    {
+        private readonly IUserRepository _userRepository;
+        private readonly TokenHelper _tokenHelper;
 
-//        public LoginUserQueryHandler(FakeDatabase database, TokenHelper tokenhelper)
-//        {
-//            _database = database;
-//            _tokenHelper = tokenhelper;
-//        }
+        public LoginUserQueryHandler(IUserRepository userRepository, TokenHelper tokenhelper)
+        {
+            _userRepository = userRepository;
+            _tokenHelper = tokenhelper;
+        }
 
-//        public Task<string> Handle(LoginUserQuery request, CancellationToken cancellationToken)
-//        {
-//            var user = _database.Users.FirstOrDefault(user => user.UserName == request.LoginUser.UserName && user.Password == request.LoginUser.Password);
+        public async Task<OperationResult<string>> Handle(LoginUserQuery request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.LogInUser(request.LoginUser.UserName, request.LoginUser.Password);
 
-//            if (user == null)
-//            {
-//                throw new UnauthorizedAccessException("Invalid Username or password");
-//            }
+            if (user.isSuccessfull)
+            {
+                string token = _tokenHelper.GenerateJwtToken(user.Data);
 
-//            string token = _tokenHelper.GenerateJwtToken(user);
+                return OperationResult<string>.Successfull(token);
+            }
+            else
+            {
+                return OperationResult<string>.Failure(user.ErrorMessage);
+            }
 
-//            return Task.FromResult(token);
-//        }
-//    }
-//}
+        }
+    }
+}

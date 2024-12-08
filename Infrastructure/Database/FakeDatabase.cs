@@ -12,11 +12,11 @@ namespace Infrastructure.Database
 
         private static List<Book> AllBooksFromDB = new List<Book>
         {
-            new Book (1, "newBook1", "Beskrivning1"),
-            new Book (2, "newBook2", "Beskrivning2"),
-            new Book (3, "newBook3", "Beskrivning3"),
-            new Book (4, "newBook4", "Beskrivning4"),
-            new Book (5, "newBook5", "Beskrivning5")
+            new Book (Guid.NewGuid(), "newBook1", "Beskrivning1"),
+            new Book (Guid.NewGuid(), "newBook2", "Beskrivning2"),
+            new Book (Guid.NewGuid(), "newBook3", "Beskrivning3"),
+            new Book (Guid.NewGuid(), "newBook4", "Beskrivning4"),
+            new Book (Guid.NewGuid(), "newBook5", "Beskrivning5")
         };
 
         public List<Author> Authors
@@ -27,11 +27,11 @@ namespace Infrastructure.Database
 
         private static List<Author> AllAuthorsFromDB = new List<Author>
         {
-            new Author (1, "FirstName1", "LastName1"),
-            new Author (2, "FirstName2", "LastName2"),
-            new Author (3, "FirstName3", "LastName3"),
-            new Author (4, "FirstName4", "LastName4"),
-            new Author (5, "FirstName5", "LastName5")
+            new Author (Guid.NewGuid(), "FirstName1", "LastName1"),
+            new Author (Guid.NewGuid(), "FirstName2", "LastName2"),
+            new Author (Guid.NewGuid(), "FirstName3", "LastName3"),
+            new Author (Guid.NewGuid(), "FirstName4", "LastName4"),
+            new Author (Guid.NewGuid(), "FirstName5", "LastName5")
         };
 
         public List<User> Users

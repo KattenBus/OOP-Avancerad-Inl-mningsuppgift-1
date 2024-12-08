@@ -15,57 +15,111 @@ namespace Infrastructure.Repositories
             _realDatabase = realDatabase;
         }
 
-        public async Task<List<Author>> GetAllAuthorList()
+        public async Task<OperationResult<List<Author>>> GetAllAuthorList()
         {
-            return await _realDatabase.Authors.ToListAsync();
+            try
+            {
+                var allAuthors = await _realDatabase.Authors.ToListAsync();
+
+                if (allAuthors == null)
+                {
+                    return OperationResult<List<Author>>.Failure("No authors found in the database.");
+                }
+                else
+                {
+                    return OperationResult<List<Author>>.Successfull(allAuthors);
+                }
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<List<Author>>.Failure(errorMessage: $"An error occurred while fetching all Authors from the Database: {ex.Message}");
+            }
+
         }
 
-        public async Task<Author?> GetAuthorById(int id)
+        public async Task<OperationResult<Author?>> GetAuthorById(Guid id)
         {
-            return await _realDatabase.Authors.FirstOrDefaultAsync(author => author.Id == id);
+            try
+            {
+                var author = await _realDatabase.Authors.FirstOrDefaultAsync(author => author.Id == id);
+
+                if (author == null)
+                {
+                    return OperationResult<Author?>.Failure($"No Author with ID {id} found in the Database!");
+                }
+                else
+                {
+                    return OperationResult<Author?>.Successfull(author);
+                }
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<Author?>.Failure(errorMessage: $"An error occurred while fetching the author from the Database: {ex.Message}");
+            }
         }
 
-        public async Task<Author> AddAuthor(Author author)
+        public async Task<OperationResult<Author>> AddAuthor(Author author)
         {
+            try
+            {
                 _realDatabase.Authors.Add(author);
-               await _realDatabase.SaveChangesAsync();
-
-                return author;
-        }
-
-        public async Task<Author?> UpdateAuthor(int id, Author author)
-        {
-            var authorToUpdate = _realDatabase.Authors.FirstOrDefault(author => author.Id == id);
-
-            if (authorToUpdate == null)
-            {
-                return null;
-            }
-            else
-            {
-                authorToUpdate.FirstName = author.FirstName;
-                authorToUpdate.LastName = author.LastName;
-
                 await _realDatabase.SaveChangesAsync();
 
-                return authorToUpdate;
+                return OperationResult<Author>.Successfull(author);
+            }
+            catch(Exception ex)
+            {
+                return OperationResult<Author>.Failure(errorMessage: $"An error occurred while adding the author to the Database: {ex.Message}");
             }
         }
 
-        public async Task<Author?> DeleteAuthorById(int id)
+        public async Task<OperationResult<Author>> UpdateAuthor(Guid id, Author author)
         {
-            var authorToDelete = _realDatabase.Authors.FirstOrDefault(author => author.Id == id);
-
-            if (authorToDelete == null) 
+            try
             {
-                return null;
+                var authorToUpdate = _realDatabase.Authors.FirstOrDefault(author => author.Id == id);
+
+                if (authorToUpdate == null)
+                {
+                    return OperationResult<Author>.Failure($"No Author with ID {id} found in the Database!");
+                }
+                else
+                {
+                    authorToUpdate.FirstName = author.FirstName;
+                    authorToUpdate.LastName = author.LastName;
+
+                    await _realDatabase.SaveChangesAsync();
+
+                    return OperationResult<Author>.Successfull(authorToUpdate);
+                }
             }
-            else
+            catch( Exception ex)
             {
-                _realDatabase.Authors.Remove(authorToDelete);
-                await _realDatabase.SaveChangesAsync();
+                return OperationResult<Author>.Failure(errorMessage: $"An error occurred while updating the author to the Database: {ex.Message}");
+            }
+        }
 
-                return authorToDelete;
+        public async Task<OperationResult<Author>> DeleteAuthorById(Guid id)
+        {
+            try
+            {
+                var authorToDelete = _realDatabase.Authors.FirstOrDefault(author => author.Id == id);
+
+                if (authorToDelete == null)
+                {
+                    return OperationResult<Author>.Failure($"No Author with {id} found in the Database!");
+                }
+                else
+                {
+                    _realDatabase.Authors.Remove(authorToDelete);
+                    await _realDatabase.SaveChangesAsync();
+
+                    return OperationResult<Author>.Successfull(authorToDelete);
+                }
+            }
+            catch ( Exception ex )
+            {
+                return OperationResult<Author>.Failure(errorMessage: $"An error occurred while deleting the author to the Database: {ex.Message}");
             }
         }
     }
